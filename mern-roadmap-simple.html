@@ -1,0 +1,409 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Full-Stack Roadmap Notes</title>
+<style>
+  body{
+    font-family: -apple-system, Segoe UI, Roboto, Arial, sans-serif;
+    max-width: 760px;
+    margin: 0 auto;
+    padding: 32px 20px 80px;
+    color: #222;
+    line-height: 1.5;
+    background: #fff;
+  }
+  h1{ font-size: 24px; margin-bottom: 4px; }
+  .sub{ color: #666; font-size: 14px; margin-bottom: 24px; }
+  .done-note{
+    background: #f3f6f3;
+    border: 1px solid #cfe0cf;
+    padding: 10px 14px;
+    border-radius: 6px;
+    font-size: 14px;
+    margin-bottom: 28px;
+  }
+  .done-note b{ color: #2e7d32; }
+
+  nav{
+    border: 1px solid #ddd;
+    border-radius: 6px;
+    padding: 14px 18px;
+    margin-bottom: 32px;
+    columns: 2;
+    font-size: 13.5px;
+  }
+  nav a{ display:block; color:#333; text-decoration:none; padding: 2px 0; }
+  nav a:hover{ text-decoration: underline; }
+
+  h2{
+    font-size: 17px;
+    margin-top: 34px;
+    margin-bottom: 6px;
+    padding-bottom: 4px;
+    border-bottom: 1px solid #e5e5e5;
+  }
+  h2 .num{ color: #999; font-weight: 400; }
+  h2 .star{ color: #d68a00; }
+
+  ul{ margin: 6px 0 0 0; padding-left: 0; list-style: none; }
+  li{
+    padding: 3px 0 3px 22px;
+    position: relative;
+    font-size: 14.5px;
+  }
+  li::before{
+    content: "☐";
+    position: absolute;
+    left: 0;
+    color: #aaa;
+  }
+  li.checked{ color: #999; text-decoration: line-through; }
+  li.checked::before{ content: "☑"; color: #2e7d32; }
+
+  .note{
+    font-size: 13px;
+    color: #777;
+    margin: 6px 0 0 0;
+    font-style: italic;
+  }
+
+  footer{
+    margin-top: 50px;
+    font-size: 12.5px;
+    color: #999;
+    border-top: 1px solid #eee;
+    padding-top: 16px;
+  }
+</style>
+</head>
+<body>
+
+  <h1>Full-Stack Roadmap — Notes</h1>
+  <div class="sub">Reference page. Click any topic to check it off.</div>
+
+  <div class="done-note">
+    <b>Already known:</b> HTML, CSS, JavaScript, Node.js, Express, EJS, REST APIs, SQL — phases below build on these rather than repeating them.
+  </div>
+
+  <nav id="toc"></nav>
+
+  <div id="content">
+
+    <h2 id="p0"><span class="num">0.</span> Web Fundamentals</h2>
+    <ul>
+      <li>Client vs server, request/response</li>
+      <li>HTTP, HTTPS, DNS, IP address, domain, ports, TCP/IP</li>
+      <li>HTTP methods — GET, POST, PUT, PATCH, DELETE</li>
+      <li>Status codes — 2xx, 3xx, 4xx, 5xx</li>
+      <li>Headers, cookies, sessions, CORS, SSL/TLS basics</li>
+    </ul>
+
+    <h2 id="p1"><span class="num">1.</span> HTML (advanced)</h2>
+    <ul>
+      <li>Semantic HTML — header, nav, main, section, article, footer</li>
+      <li>Accessibility &amp; ARIA</li>
+      <li>SEO fundamentals, meta tags, Open Graph</li>
+      <li>Forms, input types, validation</li>
+      <li>Structured data basics</li>
+    </ul>
+
+    <h2 id="p2"><span class="num">2.</span> CSS</h2>
+    <ul>
+      <li>Selectors, specificity, box model, positioning</li>
+      <li>Flexbox &amp; Grid mastery</li>
+      <li>Responsive design — media queries, mobile-first, fluid layouts</li>
+      <li>CSS variables, transitions, animations, transforms</li>
+      <li>Pseudo-elements/classes, container queries</li>
+      <li>One styling ecosystem — Tailwind, CSS Modules, or Sass</li>
+    </ul>
+
+    <h2 id="p3"><span class="num">3.</span> JavaScript <span class="star">⭐⭐⭐</span></h2>
+    <ul>
+      <li>Core: variables, scope, hoisting, closures, objects, arrays, strings</li>
+      <li>Modern JS — destructuring, spread/rest, optional chaining, nullish coalescing, modules</li>
+      <li>Higher-order functions, callbacks, IIFE, pure functions</li>
+      <li>Async JS — callbacks → promises → async/await → event loop</li>
+      <li>Promise.all, allSettled, race, any</li>
+      <li>Runtime internals — call stack, web APIs, micro/macrotask queues</li>
+    </ul>
+
+    <h2 id="p4"><span class="num">4.</span> Browser JavaScript</h2>
+    <ul>
+      <li>DOM tree, selecting/creating/removing elements</li>
+      <li>Event listeners, bubbling, capturing, delegation</li>
+      <li>localStorage, sessionStorage, cookies</li>
+      <li>Fetch API, URL API, History API, FormData, File API</li>
+      <li>WebSocket basics</li>
+    </ul>
+
+    <h2 id="p5"><span class="num">5.</span> Git &amp; GitHub</h2>
+    <ul>
+      <li>init, clone, add, commit, push, pull, fetch</li>
+      <li>merge, rebase, branch, checkout, switch, stash, reset, revert</li>
+      <li>Pull requests, issues, branching strategy, semantic commits, code review</li>
+    </ul>
+
+    <h2 id="p6"><span class="num">6.</span> React <span class="star">⭐⭐⭐</span></h2>
+    <ul>
+      <li>Components, JSX, props, state, events</li>
+      <li>Conditional rendering, lists &amp; keys, forms</li>
+      <li>useState, useEffect, useContext, useRef, useMemo, useCallback, useReducer</li>
+      <li>Know when <i>not</i> to use each hook</li>
+    </ul>
+
+    <h2 id="p7"><span class="num">7.</span> Advanced React</h2>
+    <ul>
+      <li>Component architecture — pages → features → components → reusable UI</li>
+      <li>Container/presentational pattern, composition, props drilling</li>
+      <li>Custom hooks</li>
+      <li>React Router — nested, dynamic &amp; protected routes, params, query params</li>
+    </ul>
+
+    <h2 id="p8"><span class="num">8.</span> State Management</h2>
+    <ul>
+      <li>useState/useContext for small apps</li>
+      <li>Redux Toolkit — store, slice, action, reducer, dispatch</li>
+      <li>RTK Query, or Zustand as an alternative</li>
+      <li>Server state vs client state (cart UI = client, product data = server)</li>
+    </ul>
+
+    <h2 id="p9"><span class="num">9.</span> TypeScript <span class="star">⭐⭐⭐</span></h2>
+    <ul>
+      <li>Types, interfaces, type aliases, unions, intersections</li>
+      <li>Generics, enums, tuples, type narrowing, utility types</li>
+      <li>keyof, typeof, type guards, function types, classes, modules</li>
+      <li>Apply across React + Node + Express</li>
+    </ul>
+
+    <h2 id="p10"><span class="num">10.</span> Node.js (deeper) <span class="star">⭐⭐⭐</span></h2>
+    <ul>
+      <li>CommonJS vs ES Modules, package.json, npm/npx</li>
+      <li>Environment variables, file system, streams, buffers</li>
+      <li>Events, EventEmitter, HTTP module</li>
+      <li>Node architecture — single thread, event loop, non-blocking I/O</li>
+    </ul>
+
+    <h2 id="p11"><span class="num">11.</span> Express.js (production-level) <span class="star">⭐⭐⭐</span></h2>
+    <ul>
+      <li>Routing, middleware, controllers, error handling</li>
+      <li>Move from route-handler-does-everything to route → middleware → controller → service → repository → database</li>
+    </ul>
+
+    <h2 id="p12"><span class="num">12.</span> Backend Architecture</h2>
+    <ul>
+      <li>MVC vs layered architecture (routes → controllers → services → repositories → DB)</li>
+      <li>Separation of concerns, modular architecture, reusable services</li>
+      <li>Centralized error handling, configuration management</li>
+    </ul>
+
+    <h2 id="p13"><span class="num">13.</span> REST API (production design) <span class="star">⭐⭐⭐</span></h2>
+    <ul>
+      <li>Resource naming, HTTP semantics, status codes</li>
+      <li>Pagination, filtering, sorting, searching, query params</li>
+      <li>API versioning, consistent error responses, validation</li>
+    </ul>
+
+    <h2 id="p14"><span class="num">14.</span> Authentication &amp; Authorization <span class="star">⭐⭐⭐</span></h2>
+    <ul>
+      <li>Registration, login, logout, password hashing</li>
+      <li>Sessions vs JWT — access tokens, refresh tokens</li>
+      <li>Email verification, password reset</li>
+      <li>Role-based access control — customer / admin / seller / moderator</li>
+    </ul>
+
+    <h2 id="p15"><span class="num">15.</span> Security <span class="star">⭐⭐⭐</span></h2>
+    <ul>
+      <li>HTTPS, CORS, CSRF, XSS, SQL/NoSQL injection</li>
+      <li>Rate limiting, brute-force protection, secure cookies</li>
+      <li>HTTP security headers, input validation, output sanitization</li>
+      <li>Secrets management, OWASP Top 10</li>
+    </ul>
+
+    <h2 id="p16"><span class="num">16.</span> Validation</h2>
+    <ul>
+      <li>Zod, Joi, or express-validator</li>
+      <li>Frontend validation → backend validation → DB constraints (always validate on the backend too)</li>
+    </ul>
+
+    <h2 id="p17"><span class="num">17.</span> SQL (deeper) <span class="star">⭐⭐⭐</span></h2>
+    <ul>
+      <li>Primary/foreign keys, constraints, JOINs, subqueries, CTEs, views</li>
+      <li>Transactions, indexes, composite indexes</li>
+      <li>Normalization/denormalization, ACID, isolation levels, query optimization</li>
+      <li>Go deep on one database — PostgreSQL recommended</li>
+    </ul>
+
+    <h2 id="p18"><span class="num">18.</span> MongoDB <span class="star">⭐⭐⭐</span></h2>
+    <ul>
+      <li>Database → collection → document → field</li>
+      <li>CRUD, embedded documents vs references, indexes, aggregation, transactions</li>
+      <li>Schema design, MongoDB Atlas</li>
+      <li>Mongoose — schema, model, middleware, validation, population</li>
+    </ul>
+
+    <h2 id="p19"><span class="num">19.</span> SQL vs MongoDB</h2>
+    <ul>
+      <li>SQL — users, orders, products, payments, invoices, relationships</li>
+      <li>MongoDB — flexible/catalog-like data, rapidly changing schemas</li>
+      <li>Know both relational and document models rather than picking one by default</li>
+    </ul>
+
+    <h2 id="p20"><span class="num">20.</span> ORM / ODM</h2>
+    <ul>
+      <li>Prisma or Drizzle for SQL</li>
+      <li>Mongoose for MongoDB</li>
+      <li>Understand what the tool does underneath — don't treat it as magic</li>
+    </ul>
+
+    <h2 id="p21"><span class="num">21.</span> Caching <span class="star">⭐⭐</span></h2>
+    <ul>
+      <li>Redis basics, TTL, sessions, rate limiting</li>
+      <li>Cache-check-before-DB pattern, cache invalidation, pub/sub basics</li>
+    </ul>
+
+    <h2 id="p22"><span class="num">22.</span> File Uploads</h2>
+    <ul>
+      <li>Multipart/form-data, file uploads, image validation/resizing/compression</li>
+      <li>Object storage — AWS S3 or Cloudinary</li>
+      <li>Product → images → object storage → DB stores the URL</li>
+    </ul>
+
+    <h2 id="p23"><span class="num">23.</span> Payments <span class="star">⭐⭐⭐</span></h2>
+    <ul>
+      <li>Cart → checkout → payment gateway → confirmation → order creation</li>
+      <li>Payment intents, webhooks, idempotency, refunds, failed payments</li>
+      <li>Backend must verify payment state — never trust the frontend alone</li>
+    </ul>
+
+    <h2 id="p24"><span class="num">24.</span> Email &amp; Notifications</h2>
+    <ul>
+      <li>Transactional email — verification, password reset, order confirmation, shipping</li>
+      <li>SMTP / email APIs, tied into background jobs</li>
+    </ul>
+
+    <h2 id="p25"><span class="num">25.</span> Background Jobs &amp; Queues <span class="star">⭐⭐⭐</span></h2>
+    <ul>
+      <li>Queue → worker → background task pattern</li>
+      <li>Retries, delayed jobs, failed jobs, idempotency</li>
+      <li>Redis + BullMQ</li>
+      <li>Example: order placed → API responds fast → queue handles email/invoice/analytics</li>
+    </ul>
+
+    <h2 id="p26"><span class="num">26.</span> WebSockets</h2>
+    <ul>
+      <li>HTTP request/response vs persistent WebSocket connection</li>
+      <li>Use cases — chat, notifications, live order tracking, dashboards</li>
+      <li>Socket.IO</li>
+    </ul>
+
+    <h2 id="p27"><span class="num">27.</span> Testing <span class="star">⭐⭐⭐</span></h2>
+    <ul>
+      <li>Unit testing (individual functions)</li>
+      <li>Integration testing (API + database)</li>
+      <li>End-to-end testing (browser → frontend → backend → DB)</li>
+      <li>Tools — Vitest/Jest, Supertest, Playwright</li>
+    </ul>
+
+    <h2 id="p28"><span class="num">28.</span> API Documentation</h2>
+    <ul>
+      <li>OpenAPI / Swagger</li>
+      <li>Document request/response shapes for every endpoint</li>
+    </ul>
+
+    <h2 id="p29"><span class="num">29.</span> Logging &amp; Monitoring</h2>
+    <ul>
+      <li>Structured logging, error logging, request logging</li>
+      <li>Health checks (GET /health)</li>
+      <li>Winston/Pino, Sentry, application metrics</li>
+    </ul>
+
+    <h2 id="p30"><span class="num">30.</span> Performance Optimization <span class="star">⭐⭐⭐</span></h2>
+    <ul>
+      <li>Frontend — lazy loading, code splitting, image optimization, memoization, virtualization, CDN</li>
+      <li>Backend — indexes, query optimization, caching, compression, pagination, connection pooling, rate limiting</li>
+    </ul>
+
+    <h2 id="p31"><span class="num">31.</span> Next.js</h2>
+    <ul>
+      <li>File-based routing, server vs client components</li>
+      <li>SSR, static generation, dynamic rendering, route handlers, middleware</li>
+      <li>Understand both React+Express and Next.js — not a required replacement</li>
+    </ul>
+
+    <h2 id="p32"><span class="num">32.</span> DevOps — Linux <span class="star">⭐⭐⭐</span></h2>
+    <ul>
+      <li>cd, ls, pwd, mkdir, rm, cp, mv, cat, grep, chmod, ps, kill</li>
+      <li>Processes, environment variables, ports, SSH, logs</li>
+    </ul>
+
+    <h2 id="p33"><span class="num">33.</span> Docker <span class="star">⭐⭐⭐</span></h2>
+    <ul>
+      <li>Dockerfile, image, container, volume, network</li>
+      <li>Docker Compose — frontend + backend + database + Redis containers together</li>
+    </ul>
+
+    <h2 id="p34"><span class="num">34.</span> CI/CD</h2>
+    <ul>
+      <li>Push → CI pipeline → run tests → build → deploy</li>
+      <li>GitHub Actions, automated testing, build/deploy pipelines, secrets</li>
+    </ul>
+
+    <h2 id="p35"><span class="num">35.</span> Cloud</h2>
+    <ul>
+      <li>Go deep on one provider — e.g. AWS: EC2, S3, RDS, CloudFront, IAM, VPC, load balancer basics</li>
+      <li>Also know modern platforms — Vercel, Render, Railway</li>
+    </ul>
+
+    <h2 id="p36"><span class="num">36.</span> System Design <span class="star">⭐⭐⭐</span></h2>
+    <ul>
+      <li>Scalability, availability, reliability, latency, throughput, bottlenecks</li>
+      <li>Client → CDN → load balancer → app servers → cache → database</li>
+      <li>Horizontal/vertical scaling, DB replication, sharding basics</li>
+      <li>Caching, message queues, microservices vs modular monolith</li>
+      <li class="note" style="padding-left:0;">Start with a strong modular monolith — not microservices.</li>
+    </ul>
+
+    <h2 id="p37"><span class="num">37.</span> Advanced Ecommerce Architecture</h2>
+    <p class="note" style="margin-top:8px;">React frontend → Express API → (auth / product / order services) → PostgreSQL → Redis, plus payment gateway + webhooks, object storage for images, a queue for background workers, and an email service for notifications.</p>
+
+    <h2 id="pfeatures">What the ecommerce project should contain</h2>
+    <ul>
+      <li><b>Customer:</b> registration, login, email verification, forgot password, profile, addresses, wishlist, cart, search/filter/sort, reviews &amp; ratings, coupons, checkout, payments, orders, order tracking, returns, refunds, notifications</li>
+      <li><b>Admin:</b> dashboard, product/category management, inventory, orders, users, coupons, reviews, sales &amp; revenue analytics, reports</li>
+      <li><b>Advanced:</b> search, recommendations, Redis caching, background jobs, payment webhooks, image storage, rate limiting, audit logs, API docs, testing, monitoring, Docker, CI/CD, deployment</li>
+    </ul>
+
+    <h2 id="pprojects">Suggested project progression</h2>
+    <ul>
+      <li>1. Vanilla JS — expense tracker (HTML/CSS/JS/DOM/localStorage)</li>
+      <li>2. REST API — task management API (Node/Express/SQL/auth/validation)</li>
+      <li>3. React — movie/product dashboard (React Router, API integration, state, forms)</li>
+      <li>4. Full stack — blog/social platform (React + Express + PostgreSQL: auth, CRUD, images, comments, likes, pagination, search)</li>
+      <li>5. Advanced — ecommerce (React + TypeScript + Node + Express + PostgreSQL + MongoDB where useful + Redis + payments + object storage + Docker + testing + CI/CD + cloud)</li>
+    </ul>
+
+  </div>
+
+  <footer>Checkboxes are for this session only — nothing is saved when you reload.</footer>
+
+<script>
+  // build TOC
+  const toc = document.getElementById('toc');
+  document.querySelectorAll('#content h2').forEach(h => {
+    const a = document.createElement('a');
+    a.href = '#' + h.id;
+    a.textContent = h.textContent.replace(/⭐/g,'').trim();
+    toc.appendChild(a);
+  });
+
+  // click-to-check topics
+  document.querySelectorAll('#content li').forEach(li => {
+    li.style.cursor = 'pointer';
+    li.addEventListener('click', () => li.classList.toggle('checked'));
+  });
+</script>
+
+</body>
+</html>

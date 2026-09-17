@@ -1,64 +1,170 @@
-* {
-    background-color: #232323;
+:root {
+    --bg: #14141c;
+    --surface: #1e1e2a;
+    --surface-2: #262636;
+    --border: #35354a;
+    --accent: #8b7ff5;
+    --accent-hover: #a394ff;
+    --accent-soft: rgba(139, 127, 245, 0.15);
+    --danger: #f0648c;
+    --danger-hover: #ff7fa1;
+    --text: #f1f1f6;
+    --text-dim: #9a9ab0;
 }
+
+* {
+    box-sizing: border-box;
+    font-family: 'Segoe UI', system-ui, -apple-system, sans-serif;
+}
+
+body {
+    background: radial-gradient(circle at top, #1c1c2a 0%, var(--bg) 60%);
+    color: var(--text);
+    min-height: 100vh;
+    margin: 0;
+    padding: 2rem 1rem;
+}
+
 h2 {
     text-align: center;
-    color: rgb(163, 144, 192);
+    color: var(--text);
+    font-size: 2.2rem;
+    font-weight: 700;
+    letter-spacing: 0.5px;
+    margin-bottom: 0.25rem;
+}
 
+h2::after {
+    content: "";
+    display: block;
+    width: 60px;
+    height: 4px;
+    margin: 0.75rem auto 0;
+    border-radius: 2rem;
+    background: linear-gradient(90deg, var(--accent), var(--danger));
 }
 
 div {
     text-align: center;
 }
+
 button {
-    height: 40px;
+    height: 42px;
     width: 120px;
     border: 1px solid transparent;
-    border-radius:1rem;
-    background-color:rgb(138, 116, 188);
-    font-size: 1.15rem;
-    font-weight: 500;
-    margin:2rem 2rem;
-    animation: 5s;
+    border-radius: 1rem;
+    background-color: var(--accent);
+    color: #14141c;
+    font-size: 1.05rem;
+    font-weight: 600;
+    margin: 2rem 0.6rem 1rem;
+    cursor: pointer;
+    transition: transform 0.15s ease, background-color 0.2s ease, box-shadow 0.2s ease;
+    box-shadow: 0 4px 14px rgba(139, 127, 245, 0.25);
 }
 
+button:hover {
+    background-color: var(--accent-hover);
+    transform: translateY(-2px);
+    box-shadow: 0 6px 18px rgba(139, 127, 245, 0.35);
+}
+
+button:active {
+    transform: translateY(0);
+}
+
+button.delete {
+    background-color: var(--danger);
+    box-shadow: 0 4px 14px rgba(240, 100, 140, 0.25);
+}
+
+button.delete:hover {
+    background-color: var(--danger-hover);
+    box-shadow: 0 6px 18px rgba(240, 100, 140, 0.35);
+}
+
+button.reset {
+    background-color: transparent;
+    color: var(--text);
+    border: 1px solid var(--border);
+    box-shadow: none;
+}
+
+button.reset:hover {
+    background-color: var(--surface-2);
+    transform: translateY(-2px);
+}
 
 input {
     display: none;
-    border: none;
-    height: 50px;
-    color: #232323;
-    width: 500px;
-    font-size:1.25rem ;
-    background-color: rgb(160, 151, 195);
+    border: 1px solid var(--accent);
+    height: 52px;
+    color: var(--text);
+    width: 100%;
+    max-width: 500px;
+    font-size: 1.15rem;
+    background-color: var(--surface-2);
     border-radius: 2rem;
-    padding: 0 1rem;
+    padding: 0 1.5rem;
+    margin: 0 auto;
+}
+
+input::placeholder {
+    color: var(--text-dim);
 }
 
 input:focus {
     outline: none;
+    box-shadow: 0 0 0 4px var(--accent-soft);
 }
+
 .list {
     width: 400px;
+    max-width: 90vw;
     text-align: left;
-    margin-top:100px;
-    margin-left: 100px;
-}
-
-ul {
-
-    border:1px solid whitesmoke;
-    min-height: 300px;
-    border-radius: 1rem;
-    padding:1rem 1rem;
-    
-}
-li {
-    color: white;
-    margin:1rem 1rem;
+    margin: 2.5rem auto 0;
+    background: var(--surface);
+    border-radius: 1.25rem;
+    padding: 1.5rem;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.35);
+    border: 1px solid var(--border);
 }
 
 h3 {
-    color: rgb(215, 158, 222);
+    color: var(--accent-hover);
     text-align: center;
+    font-size: 1.05rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    margin-top: 0;
+    margin-bottom: 1.25rem;
+}
+
+ul {
+    list-style: none;
+    border: none;
+    min-height: 200px;
+    border-radius: 1rem;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 0.6rem;
+}
+
+li {
+    color: var(--text);
+    margin: 0;
+    padding: 0.85rem 1.1rem;
+    background-color: var(--surface-2);
+    border-radius: 0.75rem;
+    border-left: 3px solid var(--accent);
+    font-size: 1.05rem;
+    transition: background-color 0.2s ease, transform 0.15s ease;
+}
+
+li:hover {
+    background-color: #2e2e42;
+    transform: translateX(4px);
 }

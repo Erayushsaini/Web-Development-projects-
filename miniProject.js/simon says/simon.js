@@ -27,7 +27,7 @@ function btnFlash(btn) {
 
     setTimeout(function () {
         btn.classList.remove("flash");
-    },400)
+    },500)
 
 }
 
