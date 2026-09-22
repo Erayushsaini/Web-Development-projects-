@@ -1,363 +1,227 @@
-@import url("https://fonts.googleapis.com/css2?family=Lilita+One&family=Nunito:wght@600;800&display=swap");
+@import url('https://fonts.googleapis.com/css2?family=Fredoka:wght@500;600;700&family=Nunito:wght@500;600;700&display=swap');
 
-/* =========================================================
-   Tic-Tac-Toe: styled for the existing index.html + index.js
-   (no HTML or JS changes needed)
-   ========================================================= */
-
-:root {
-    --indigo: #2b2372;
-    --ink: #150f45;
-    --tile: #f4f0ff;
-    --tile-shade: #d9d1f5;
-    --orange: #ff6b35;
-    --teal: #12b89b;
-    --yellow: #ffd23f;
-    --cell: clamp(78px, 24vw, 130px);
-
-    --font-display: "Lilita One", "Trebuchet MS", "Arial Rounded MT Bold", sans-serif;
-    --font-body: "Nunito", "Segoe UI", system-ui, sans-serif;
-}
-
-*,
-*::before,
-*::after {
+* {
     box-sizing: border-box;
 }
 
-/* ---------- Page ---------- */
 body {
     margin: 0;
     min-height: 100vh;
-    font-family: var(--font-body);
-    color: var(--ink);
-    background-color: var(--indigo);
-    background-image: radial-gradient(rgba(255, 255, 255, 0.08) 2px, transparent 2px);
-    background-size: 28px 28px;
+    font-family: 'Nunito', sans-serif;
+    background: linear-gradient(135deg, #fff2d9 0%, #ffe0ef 45%, #e0f7f4 100%);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 40px 16px;
 }
 
 .container {
-    min-height: 100vh;
     width: 100%;
-    padding: 24px 16px 48px;
-}
-
-header {
-    margin-bottom: 24px;
+    max-width: 460px;
 }
 
 h1 {
-    margin: 0;
     text-align: center;
-    line-height: 1.1;
-    font-family: var(--font-display);
-    font-weight: 400;
-    font-size: clamp(2.4rem, 9vw, 4.2rem);
-    letter-spacing: 0.04em;
-    color: var(--tile);
-    text-shadow:
-        3px 3px 0 var(--orange),
-        6px 6px 0 var(--ink);
+    margin: 0 0 28px;
+    font-family: 'Fredoka', sans-serif;
+    font-weight: 700;
+    font-size: 2.4rem;
+    letter-spacing: 1px;
+    color: #ff5da2;
+    -webkit-text-stroke: 1px #7c4dff;
+    animation: fade-in 0.5s ease both;
 }
 
 main {
+    width: 100%;
     display: flex;
     flex-direction: column;
     align-items: center;
     gap: 28px;
+    background: #fffdf9;
+    border: 3px solid #ffd23f;
+    border-radius: 26px;
+    padding: 34px 26px;
+    box-shadow: 0 18px 36px rgba(124, 77, 255, 0.18);
+    animation: rise-in 0.5s ease both;
 }
 
-/* ---------- Setup card (.selector) ---------- */
 .selector {
-    width: min(100%, 400px);
+    height: auto;
+    min-height: 120px;
+    width: 100%;
+    max-width: 380px;
+    gap: 20px;
     display: flex;
     flex-direction: column;
-    gap: 20px;
-    padding: 22px;
-    background: var(--tile);
-    border: 3px solid var(--ink);
-    border-radius: 22px;
-    box-shadow: 6px 6px 0 var(--ink);
+    align-items: center;
 }
 
-/* "Select Naught or Cross" */
 .selector > div:first-child {
+    color: #7c4dff;
+    font-weight: 700;
+    font-size: 1.05rem;
     text-align: center;
-    font-weight: 800;
-    font-size: 1.15rem;
 }
 
-/* Naught / Cross tiles (#naught, #cross) */
+.selector p {
+    color: #00a896;
+    font-weight: 700;
+    font-size: 1rem;
+    text-align: center;
+    margin: 0;
+    padding: 8px 18px;
+    background: #e0f7f4;
+    border-radius: 999px;
+    animation: fade-in 0.35s ease both;
+}
+
 .icon {
     display: flex;
+    gap: 20px;
+}
+
+.icon i {
+    display: flex;
+    align-items: center;
     justify-content: center;
-    gap: 18px;
-}
-
-.icon div {
-    display: grid;
-    place-items: center;
-    width: 76px;
-    height: 76px;
-    font-size: 2rem;
-    background: #fff;
-    border: 3px solid var(--ink);
-    border-radius: 18px;
-    box-shadow: 4px 4px 0 var(--ink);
-    cursor: pointer;
-    user-select: none;
-    transition: transform 0.12s ease, box-shadow 0.12s ease;
-}
-
-.icon div:hover {
-    transform: translate(-2px, -2px);
-    box-shadow: 6px 6px 0 var(--ink);
-}
-
-.icon div:active {
-    transform: translate(3px, 3px);
-    box-shadow: 1px 1px 0 var(--ink);
-}
-
-.fa-x,
-.fa-xmark,
-.x {
-    color: var(--orange);
-}
-
-.fa-0,
-.fa-o,
-.fa-circle,
-.o {
-    color: var(--teal);
-}
-
-/* "You want turn first?" + YES / NO */
-.selector > div:nth-child(3) {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 12px;
-}
-
-.selector > div:nth-child(3) span {
-    flex: 1 0 100%;
-    text-align: center;
-    font-weight: 800;
-    font-size: 1.05rem;
-}
-
-.choice {
-    flex: 1;
-    padding: 11px 0;
-    text-align: center;
-    font-family: var(--font-display);
-    font-size: 1.15rem;
-    letter-spacing: 0.04em;
-    color: var(--ink);
-    border: 3px solid var(--ink);
-    border-radius: 14px;
-    box-shadow: 4px 4px 0 var(--ink);
-    cursor: pointer;
-    user-select: none;
-    transition: transform 0.12s ease, box-shadow 0.12s ease;
-}
-
-.choice:first-of-type {
-    background: var(--teal);
-}
-
-.choice:last-of-type {
-    background: var(--orange);
-}
-
-.choice:hover {
-    transform: translate(-2px, -2px);
-    box-shadow: 6px 6px 0 var(--ink);
-}
-
-.choice:active {
-    transform: translate(3px, 3px);
-    box-shadow: 1px 1px 0 var(--ink);
-}
-
-/* Once a choice is made, lock the tiles so it looks "done" */
-.selector:has(.select p) .icon div,
-.selector:has(.select p:nth-child(2)) .choice {
-    opacity: 0.5;
-    pointer-events: none;
-}
-
-/* Messages JS adds ("Player 1 choose ...") */
-.select {
-    display: flex;
-    flex-direction: column;
-    gap: 10px;
-}
-
-.select:empty {
-    display: none;
-}
-
-.select p {
-    margin: 0;
-    padding: 10px 14px;
-    font-weight: 800;
-    font-size: 0.95rem;
-    background: #fff;
-    border: 3px solid var(--ink);
-    border-left-width: 8px;
-    border-left-color: var(--teal);
-    border-radius: 12px;
-}
-
-.select p:nth-child(2) {
-    border-left-color: var(--orange);
-}
-
-/* ---------- Board ---------- */
-.box {
-    display: grid;
-    grid-template-columns: repeat(3, var(--cell));
-    grid-template-rows: repeat(3, var(--cell));
-    gap: 12px;
-    padding: 14px;
-    background: var(--ink);
-    border-radius: 26px;
-    box-shadow: 0 10px 0 rgba(0, 0, 0, 0.25);
-}
-
-.block {
-    display: grid;
-    place-items: center;
-    font-family: var(--font-display);
-    font-size: calc(var(--cell) * 0.5);
-    line-height: 1;
-    color: var(--ink);
-    background-color: var(--tile);
+    height: 56px;
+    width: 56px;
+    background: #fffdf9;
+    color: #7c4dff;
+    border: 3px solid #7c4dff;
     border-radius: 16px;
-    box-shadow: inset 0 -6px 0 var(--tile-shade);
+    font-size: 1.2rem;
     cursor: pointer;
-    user-select: none;
-    transition: transform 0.12s ease, background-color 0.12s ease;
+    padding: 0;
+    transition: transform 0.15s ease, background 0.2s ease, color 0.2s ease;
 }
 
-.block:empty:hover {
-    background-color: #fff;
+.icon i:hover {
+    background: #7c4dff;
+    color: #fffdf9;
     transform: translateY(-3px);
 }
 
-.block:empty:active {
-    transform: translateY(2px);
+#O:hover {
+    background: #00c2a8;
+    border-color: #00c2a8;
 }
 
-/* Cell just got an X or O */
-.block:not(:empty) {
-    background-color: var(--yellow);
-    box-shadow: inset 0 -6px 0 #e6b91f;
-    animation: place 0.28s cubic-bezier(0.3, 1.7, 0.5, 1);
+#X:hover {
+    background: #ff5da2;
+    border-color: #ff5da2;
 }
 
-/* ---------- Disabled state (class added by JS) ---------- */
-.disable {
-    pointer-events: none;
+.box {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    grid-template-rows: repeat(3, 1fr);
+    gap: 12px;
 }
 
-/* empty + disabled = game not started, or game over */
-.block.disable:empty {
-    opacity: 0.45;
+.block {
+    height: 88px;
+    width: 88px;
+    background: #fff8ec;
+    color: #7c4dff;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-family: 'Fredoka', sans-serif;
+    font-weight: 600;
+    font-size: 2rem;
+    border: 3px solid #ffd23f;
+    border-radius: 18px;
+    cursor: pointer;
+    user-select: none;
+    transition: transform 0.15s ease, background 0.2s ease, border-color 0.2s ease;
 }
 
-/* ---------- Result message + reset button ---------- */
-.result:empty {
+.block:hover {
+    border-color: #ff5da2;
+    background: #fff0f6;
+    transform: translateY(-2px);
+}
+
+.disappear {
     display: none;
 }
 
+.disable {
+    pointer-events: none;
+    opacity: 0.55;
+}
+
 .result {
-    width: min(100%, 400px);
-}
-
-.result h2 {
-    margin: 0;
-    padding: 14px 18px;
+    min-height: 28px;
     text-align: center;
-    font-family: var(--font-display);
-    font-weight: 400;
-    font-size: 1.6rem;
-    letter-spacing: 0.02em;
-    color: var(--yellow);
-    background: var(--ink);
-    border-radius: 16px;
-    box-shadow: 5px 5px 0 rgba(0, 0, 0, 0.3);
-    animation: place 0.4s cubic-bezier(0.3, 1.7, 0.5, 1);
-}
-
-.reset,
-main > button {
-    padding: 12px 32px;
-    font-family: var(--font-display);
+    font-family: 'Fredoka', sans-serif;
+    font-weight: 600;
     font-size: 1.2rem;
-    letter-spacing: 0.04em;
-    color: var(--ink);
-    background: var(--yellow);
-    border: 3px solid var(--ink);
-    border-radius: 14px;
-    box-shadow: 4px 4px 0 var(--ink);
+    color: #ff5da2;
+    animation: fade-in 0.35s ease both;
+}
+
+main button {
+    margin-top: 2px;
+    padding: 12px 32px;
+    font-family: 'Fredoka', sans-serif;
+    font-weight: 600;
+    font-size: 0.95rem;
+    letter-spacing: 0.5px;
+    color: #fffdf9;
+    background: linear-gradient(90deg, #ff5da2, #7c4dff, #00c2a8);
+    border: none;
+    border-radius: 999px;
     cursor: pointer;
-    transition: transform 0.12s ease, box-shadow 0.12s ease;
+    box-shadow: 0 8px 18px rgba(124, 77, 255, 0.3);
+    transition: transform 0.15s ease, box-shadow 0.15s ease;
 }
 
-.reset:hover,
-main > button:hover {
-    transform: translate(-2px, -2px);
-    box-shadow: 6px 6px 0 var(--ink);
+main button:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 12px 22px rgba(124, 77, 255, 0.4);
 }
 
-.reset:active,
-main > button:active {
-    transform: translate(3px, 3px);
-    box-shadow: 1px 1px 0 var(--ink);
+main button:active {
+    transform: translateY(0);
 }
 
-.reset:focus-visible,
-main > button:focus-visible {
-    outline: 4px solid var(--yellow);
-    outline-offset: 3px;
-}
-
-/* ---------- Animation ---------- */
-@keyframes place {
+@keyframes fade-in {
     from {
-        transform: scale(0.2) rotate(-25deg);
         opacity: 0;
     }
     to {
-        transform: scale(1) rotate(0);
         opacity: 1;
     }
 }
 
-@media (prefers-reduced-motion: reduce) {
-    *,
-    *::before,
-    *::after {
-        animation: none !important;
-        transition: none !important;
+@keyframes rise-in {
+    from {
+        opacity: 0;
+        transform: translateY(14px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
     }
 }
 
-/* ---------- Small screens ---------- */
 @media (max-width: 420px) {
-    .selector {
-        padding: 18px;
+    .block {
+        height: 74px;
+        width: 74px;
+        font-size: 1.7rem;
     }
 
-    .icon div {
-        width: 66px;
-        height: 66px;
+    .icon i {
+        height: 48px;
+        width: 48px;
+        font-size: 1.05rem;
     }
 
-    .box {
-        gap: 8px;
-        padding: 10px;
+    h1 {
+        font-size: 1.9rem;
     }
 }

@@ -1,177 +1,162 @@
-let btns=document.querySelectorAll(".icon div");
-let selector=document.querySelector(".select");
+let btns=document.querySelectorAll(".icon i");
 let blocks=document.querySelectorAll(".block")
-let choices=document.querySelectorAll(".choice");
-let user1;
-let user2;
+let selector=document.querySelector(".selector");
+
+let box=document.querySelector(".box");
+
+let show=document.createElement("p");
+let resetBtn=document.createElement("button");
+resetBtn.innerText="RESET";
+
+let player1;
+let player2;
+
+
 let choice;
-let input=document.querySelector("input");
+
 let main=document.querySelector("main");
 let gameStarted=false;
 
 let result=document.querySelector(".result");
+
 let turn;
 
-let gamestarted=false;
-
-
-
 let patterns=[[0,1,2],[3,4,5],[6,7,8],[0,3,6],[1,4,7],[2,5,8],[0,4,8],[2,4,6]];
+
+
+box.classList.add("disappear");
 
 for(let block of blocks) {
     block.classList.add("disable");
 }
 
+
+
 for(let btn of btns) {
     btn.addEventListener("click",() => {
-        if(gameStarted) {
-            btn.classList.add("disable");
+        if(!gameStarted) {
+            startGame(btn.id);
+            gameStarted=true;
             return;
         }
-        btn.id;
-        if(btn.id=="naught") {
-            user1="O";
-            user2="X";
-            turn=true;
-        }else {
-            user1="X";
-            user2="O";
-            turn=false;
-        }
-        let show=document.createElement("p");
-        show.innerText=`Player 1 choose ${user1} and Player 2 choose ${user2}`;
-        selector.appendChild(show);
-        gameStarted=true;
-        Starterchoose();
-        
     })
 }
 
-function Starterchoose() {
-    let choicedone=false;
 
-    for(let choice of choices) {
-        choice.addEventListener("click",() => {
-            if(choicedone) {
-                choice.classList.add("disable");
-                return;
-            }
-            let ans=choice.innerHTML;
-            let starter=document.createElement("p");
-            if(ans=="YES") {
-                starter.innerText=`Player 1 should start the game`;
-            }else {
-                starter.innerText=`Player 2 should start the game`;
-            }    
-            selector.appendChild(starter);
-            choicedone=true;
-            startGame();
-        })
+
+function startGame(id) {
+    if(id==="X") {
+        turn=true;
+        player1="X";
+        player2="O";
+    }else {
+        turn=false;
+        player1="O";
+        player2="X";
     }
-    
-}
 
-
-function startGame() {
+    show.innerText=`Player 1 choose ${player1} and Player 2 choose ${player2}`;
+    selector.appendChild(show);
+    box.classList.remove("disappear");
+    for(let btn of btns) {
+        btn.classList.add("disable");
+    }
     for(let block of blocks) {
         block.classList.remove("disable");
-        block.addEventListener("click",() => {
+    }
+}
+        
+       
+let WinnerFound=false;
+
+for(let block of blocks) {
+    block.addEventListener("click" ,()=> {
+        if(!WinnerFound) {
             if(turn) {
-                block.innerHTML="O";
-                turn=false;
-                block.classList.add("disable");
-                checkwinner();
-            }else {
                 block.innerHTML="X";
-                turn=true;
                 block.classList.add("disable");
-                checkwinner();
+                turn=false;
+                winner();
+            }else {
+                block.innerHTML="O";
+                block.classList.add("disable");
+                turn=true;
+                winner();
             }
-        })
-    }
-}
-
-
-function draw() {
-    for(let block of blocks) {
-        block.classList.add("disable");
-    }
-    let h2=document.createElement("h2");
-
-    h2.innerText="DRAW! PLAY AGAIN";
-    result.appendChild(h2);
-
-}
-
-function declareWinner(winner) {
-    for(let block of blocks) {
-        block.classList.add("disable");
-    }
-    let h2=document.createElement("h2");
-
-    if(winner==user1) {
-        h2.innerText="Player 1 is the winner";
-    }else {
-        h2.innerText="Player 2 is the winner";
-    }
-    result.appendChild(h2);
-}
-
-let reset=document.createElement("button");
-
-function endGame() {
-    reset.innerText="RESET";
-    reset.classList.add("reset");
-
-    main.appendChild(reset);
-    reset.addEventListener("click",resetgame);
+        }else {
+            return;
+        }
+    })
 }
 
 
 
-function checkwinner() {
+function winner() {
     for(let pattern of patterns) {
         let pos1=pattern[0];
         let pos2=pattern[1];
         let pos3=pattern[2];
 
 
-        if(blocks[pos1].innerHTML!="" &&blocks[pos1].innerHTML==blocks[pos2].innerHTML && blocks[pos2].innerHTML==blocks[pos3].innerHTML) {
-            declareWinner(blocks[pos1].innerHTML);
-            endGame();
-            break;
+        if(blocks[pos1].innerHTML!="" &&blocks[pos1].innerHTML===blocks[pos2].innerHTML && blocks[pos2].innerHTML===blocks[pos3].innerHTML) {
+            if(blocks[pos1].innerHTML===player1) {
+                result.innerText=`player 1 is the winner with ${blocks[pos1].innerHTML}`;
+                WinnerFound=true;
+                reset();
+                return;
+            }else {
+                result.innerText=`player 2 is the winner with ${blocks[pos1].innerHTML}`;
+                WinnerFound=true;
+                reset();
+                return;
+            }
+            
+            
         }
-        
+                
     }
     let isDraw = true;
 
-        for(let block of blocks) {
-            if(block.innerHTML == "") {
-                isDraw = false;
-                break;
-            }
-        }
-
-        if(isDraw) {
-            draw();
-            endGame();
-        }
-}
-
-
-
-
-function resetgame() {
     for(let block of blocks) {
-        block.classList.remove("disable");
-        block.innerHTML = "";
+        if(block.innerHTML == "") {
+            isDraw = false;
+            break;
+        }
     }
-    result.innerHTML = "";
-    selector.innerHTML="";
 
-    gameStarted = false;
+    if(isDraw) {
+        result.innerText="DRAW! PLEASE PLAY AGAIN";
+        reset();
+        return;
+    }
 
-    setTimeout(()=> {
-        main.removeChild(reset);
-    },100)
 }
+ 
+
+resetBtn.addEventListener("click",() => {
+    restartGame();
+})
+
+function restartGame() {
+    gameStarted=false;
+    for(let block of blocks) {
+        block.classList.add("disable");
+        block.innerHTML="";
+    }
+    for(let btn of btns) {
+        btn.classList.remove("disable");
+    }
+    box.classList.add("disappear");
+    result.innerText="";
+
+    main.removeChild(resetBtn);
+    show.innerText="";
+    selector.removeChild(show);
+    WinnerFound=false;
+
+}
+
+function reset() {
+    main.appendChild(resetBtn);
+}
+

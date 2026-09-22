@@ -1,0 +1,191 @@
+
+@import url('https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,600;9..144,700&family=Work+Sans:wght@400;500;600&display=swap');
+
+* {
+    box-sizing: border-box;
+}
+
+body {
+    margin: 0;
+    min-height: 100vh;
+    font-family: 'Work Sans', sans-serif;
+    background: #f4ead7;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 40px 16px;
+}
+
+.container {
+    width: 100%;
+    max-width: 460px;
+}
+
+h1 {
+    text-align: center;
+    margin: 0 0 30px;
+    font-family: 'Fraunces', serif;
+    font-weight: 700;
+    font-size: 2.3rem;
+    letter-spacing: 1px;
+    color: #3f2e22;
+}
+
+main {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 30px;
+    background: #fffaf0;
+    border: 1px solid #e3d3b8;
+    border-radius: 18px;
+    padding: 36px 28px;
+    box-shadow: 0 18px 40px rgba(63, 46, 34, 0.12);
+}
+
+.selector {
+    height: auto;
+    min-height: 120px;
+    width: 100%;
+    max-width: 380px;
+    gap: 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.selector > div:first-child {
+    color: #6b5644;
+    font-size: 1rem;
+    font-weight: 500;
+    letter-spacing: 0.5px;
+    text-align: center;
+}
+
+.selector p {
+    color: #b5562f;
+    font-family: 'Fraunces', serif;
+    font-weight: 600;
+    font-size: 1rem;
+    text-align: center;
+    margin: 0;
+}
+
+.icon {
+    display: flex;
+    gap: 20px;
+}
+
+.icon i {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 56px;
+    width: 56px;
+    background: #fff;
+    color: #3f2e22;
+    border: 2px solid #d9c4a1;
+    border-radius: 12px;
+    font-size: 1.2rem;
+    cursor: pointer;
+    padding: 0;
+    transition: all 0.2s ease;
+}
+
+.icon i:hover {
+    background: #b5562f;
+    border-color: #b5562f;
+    color: #fff;
+    transform: translateY(-3px);
+}
+
+.box {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    grid-template-rows: repeat(3, 1fr);
+    gap: 12px;
+}
+
+.block {
+    height: 88px;
+    width: 88px;
+    background: #fff;
+    color: #3f2e22;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-family: 'Fraunces', serif;
+    font-weight: 700;
+    font-size: 2rem;
+    border: 2px solid #e3d3b8;
+    border-radius: 12px;
+    cursor: pointer;
+    user-select: none;
+    transition: all 0.15s ease;
+}
+
+.block:hover {
+    border-color: #b5562f;
+    background: #fbf1e2;
+}
+
+.disappear {
+    display: none;
+}
+
+.disable {
+    pointer-events: none;
+    opacity: 0.55;
+}
+
+.result {
+    min-height: 26px;
+    text-align: center;
+    font-family: 'Fraunces', serif;
+    font-weight: 600;
+    font-size: 1.15rem;
+    color: #6a7d5e;
+}
+
+main button {
+    margin-top: 4px;
+    padding: 12px 32px;
+    font-family: 'Work Sans', sans-serif;
+    font-weight: 600;
+    font-size: 0.95rem;
+    letter-spacing: 0.5px;
+    color: #fffaf0;
+    background: #3f2e22;
+    border: none;
+    border-radius: 999px;
+    cursor: pointer;
+    transition: background 0.2s ease, transform 0.15s ease;
+}
+
+main button:hover {
+    background: #b5562f;
+    transform: translateY(-2px);
+}
+
+main button:active {
+    transform: translateY(0);
+}
+
+@media (max-width: 420px) {
+    .block {
+        height: 74px;
+        width: 74px;
+        font-size: 1.7rem;
+    }
+
+    .icon i {
+        height: 48px;
+        width: 48px;
+        font-size: 1.05rem;
+    }
+
+    h1 {
+        font-size: 1.9rem;
+    }
+}
